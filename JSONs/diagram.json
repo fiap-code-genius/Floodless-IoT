@@ -1,52 +1,54 @@
 {
-    "version": 1,
-    "author": "IoT Flood Detection System",
-    "editor": "wokwi",
-    "parts": [
-      { "type": "wokwi-esp32-devkit-v1", "id": "esp32", "top": 150, "left": 300, "attrs": {} },
-      { "type": "wokwi-dht22", "id": "dht1", "top": 100, "left": 100, "attrs": {} },
-      { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": 150, "left": 600, "attrs": {} },
-      { "type": "wokwi-led", "id": "led1", "top": 80, "left": 300, "attrs": { "color": "red" } },
-      { "type": "wokwi-buzzer", "id": "buzzer1", "top": 79.2, "left": 424.2, "attrs": {} },
-      {
-        "type": "wokwi-lcd1602",
-        "id": "lcd1",
-        "top": -89.6,
-        "left": 284,
-        "attrs": { "pins": "i2c" }
-      },
-      { "type": "wokwi-analog-rain-sensor", "id": "rain1", "top": 200, "left": 100, "attrs": {} },
-      {
-        "type": "wokwi-pushbutton",
-        "id": "btn1",
-        "top": 419,
-        "left": 163.2,
-        "attrs": { "color": "green", "label": "Modo Simulação" }
-      }
-    ],
-    "connections": [
-      [ "dht1:VCC", "esp32:3V3", "red", [ "v20", "h200" ] ],
-      [ "dht1:GND", "esp32:GND", "black", [ "v20", "h200" ] ],
-      [ "dht1:SDA", "esp32:D23", "blue", [ "v20", "h200" ] ],
-      [ "dht1:NC", "esp32:GND", "black", [ "v20", "h200" ] ],
-      [ "ultrasonic1:VCC", "esp32:3V3", "red", [ "v0", "h-200" ] ],
-      [ "ultrasonic1:GND", "esp32:GND", "black", [ "v0", "h-200" ] ],
-      [ "ultrasonic1:TRIG", "esp32:D5", "yellow", [ "v0", "h-200" ] ],
-      [ "ultrasonic1:ECHO", "esp32:D18", "green", [ "v0", "h-200" ] ],
-      [ "led1:A", "esp32:D2", "red", [ "v20", "h0" ] ],
-      [ "led1:C", "esp32:GND", "black", [ "v20", "h0" ] ],
-      [ "buzzer1:+", "esp32:D4", "red", [ "v20", "h-50" ] ],
-      [ "buzzer1:-", "esp32:GND", "black", [ "v20", "h-50" ] ],
-      [ "lcd1:GND", "esp32:GND", "black", [ "v50", "h0" ] ],
-      [ "lcd1:VCC", "esp32:3V3", "red", [ "v50", "h0" ] ],
-      [ "lcd1:SDA", "esp32:D21", "blue", [ "v50", "h0" ] ],
-      [ "lcd1:SCL", "esp32:D22", "yellow", [ "v50", "h0" ] ],
-      [ "rain1:VCC", "esp32:3V3", "red", [ "v-20", "h200" ] ],
-      [ "rain1:GND", "esp32:GND", "black", [ "v-20", "h200" ] ],
-      [ "rain1:DO", "esp32:D19", "yellow", [ "v-20", "h200" ] ],
-      [ "rain1:AO", "esp32:D34", "blue", [ "v-20", "h200" ] ],
-      [ "btn1:1.l", "esp32:D15", "green", [ "v0" ] ],
-      [ "btn1:2.l", "esp32:GND", "black", [ "v0" ] ]
-    ],
-    "dependencies": {}
+  "version": 1,
+  "author": "IoT Flood Detection System",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp32", "top": 150, "left": 300, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": 100, "left": 100, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": 150, "left": 600, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 80, "left": 300, "attrs": { "color": "red" } },
+    { "type": "wokwi-buzzer", "id": "buzzer1", "top": 79.2, "left": 424.2, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -89.6,
+      "left": 284,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-analog-rain-sensor", "id": "rain1", "top": 200, "left": 100, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 419,
+      "left": 163.2,
+      "attrs": { "color": "green", "label": "Modo Simulação" }
+    }
+  ],
+  "connections": [
+    [ "dht1:VCC", "esp32:3V3", "red", [ "v20", "h200" ] ],
+    [ "dht1:GND", "esp32:GND", "black", [ "v20", "h200" ] ],
+    [ "dht1:SDA", "esp32:D23", "blue", [ "v20", "h200" ] ],
+    [ "dht1:NC", "esp32:GND", "black", [ "v20", "h200" ] ],
+    [ "ultrasonic1:VCC", "esp32:3V3", "red", [ "v0", "h-200" ] ],
+    [ "ultrasonic1:GND", "esp32:GND", "black", [ "v0", "h-200" ] ],
+    [ "ultrasonic1:TRIG", "esp32:D5", "yellow", [ "v0", "h-200" ] ],
+    [ "ultrasonic1:ECHO", "esp32:D18", "green", [ "v0", "h-200" ] ],
+    [ "led1:A", "esp32:D2", "red", [ "v20", "h0" ] ],
+    [ "led1:C", "esp32:GND", "black", [ "v20", "h0" ] ],
+    [ "buzzer1:+", "esp32:D4", "red", [ "v20", "h-50" ] ],
+    [ "buzzer1:-", "esp32:GND", "black", [ "v20", "h-50" ] ],
+    [ "lcd1:GND", "esp32:GND", "black", [ "v50", "h0" ] ],
+    [ "lcd1:VCC", "esp32:3V3", "red", [ "v50", "h0" ] ],
+    [ "lcd1:SDA", "esp32:D21", "blue", [ "v50", "h0" ] ],
+    [ "lcd1:SCL", "esp32:D22", "yellow", [ "v50", "h0" ] ],
+    [ "rain1:VCC", "esp32:3V3", "red", [ "v-20", "h200" ] ],
+    [ "rain1:GND", "esp32:GND", "black", [ "v-20", "h200" ] ],
+    [ "rain1:DO", "esp32:D19", "yellow", [ "v-20", "h200" ] ],
+    [ "rain1:AO", "esp32:D34", "blue", [ "v-20", "h200" ] ],
+    [ "btn1:1.l", "esp32:D15", "green", [ "v0" ] ],
+    [ "btn1:2.l", "esp32:GND", "black", [ "v0" ] ],
+    [ "buzzer1:1", "esp32:D22", "white", [ "v19.2", "h-48" ] ],
+    [ "buzzer1:2", "esp32:D23", "red", [ "v0" ] ]
+  ],
+  "dependencies": {}
 }
