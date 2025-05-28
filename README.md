@@ -115,15 +115,24 @@ O sistema é composto por três partes principais:
 
 O sistema foi implementado utilizando o simulador Wokwi, que permite testar o funcionamento completo do hardware. Abaixo está o diagrama de conexões dos componentes:
 
-![Diagrama de Conexões](images/diagrama_wokwi.png)
+
+![diagrama_conexoes](https://github.com/user-attachments/assets/861ea969-c194-4aeb-8686-65b5b1595305)
+
+
 
 ## Configuração do Node-RED
+
+
+![fluxo_nodered](https://github.com/user-attachments/assets/c6c53eab-a905-41ed-8929-c25a7258a992)
+
+
 
 ### Interface do Node-RED
 
 O dashboard do Node-RED apresenta as seguintes informações em tempo real:
 
-![Dashboard Node-RED](images/dashboard_nodered.png)
+![dashboard png](https://github.com/user-attachments/assets/3fc8dd55-cc69-4eda-8965-708bb9389529)
+
 
 Os elementos visuais incluem:
 - Medidores (gauges) para:
@@ -263,10 +272,6 @@ Sinta-se à vontade para contribuir com o projeto através de:
 - Relatórios de bugs
 - Sugestões de melhorias
 - Pull requests
-
-## Licença
-
-Este projeto está sob a licença MIT.
 
 ## Parâmetros de Configuração
 
