@@ -1,0 +1,6 @@
+PubSubClient
+DHT22
+DHT sensor library
+LiquidCrystal_I2C_UTF8
+ArduinoJson
+WiFi 

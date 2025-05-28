@@ -1,0 +1,342 @@
+[
+    {
+        "id": "dashboard-tab",
+        "type": "ui_tab",
+        "name": "Monitoramento",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "dashboard-group",
+        "type": "ui_group",
+        "name": "Sensores",
+        "tab": "dashboard-tab",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "hidden": false
+    },
+    {
+        "id": "d6b6ee2824896677",
+        "type": "tab",
+        "label": "Monitoramento de Enchentes",
+        "disabled": false,
+        "info": "Sistema de monitoramento de enchentes"
+    },
+    {
+        "id": "mqtt-in",
+        "type": "mqtt in",
+        "z": "d6b6ee2824896677",
+        "name": "MQTT - Dados do Sensor",
+        "topic": "flood/sensors/data/device001",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "a3a889818ff81a72",
+        "nl": false,
+        "rap": false,
+        "rh": 0,
+        "inputs": 0,
+        "x": 450,
+        "y": 320,
+        "wires": [
+            [
+                "json-parse",
+                "4882b4110d76580f"
+            ]
+        ]
+    },
+    {
+        "id": "json-parse",
+        "type": "json",
+        "z": "d6b6ee2824896677",
+        "name": "Converter JSON",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 720,
+        "y": 320,
+        "wires": [
+            [
+                "temperatura-fn",
+                "umidade-fn",
+                "agua-fn",
+                "chuva-fn",
+                "alertas-fn"
+            ]
+        ]
+    },
+    {
+        "id": "temperatura-fn",
+        "type": "function",
+        "z": "d6b6ee2824896677",
+        "name": "Temperatura",
+        "func": "msg.payload = msg.payload.temperature;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1010,
+        "y": 280,
+        "wires": [
+            [
+                "temp-gauge"
+            ]
+        ]
+    },
+    {
+        "id": "umidade-fn",
+        "type": "function",
+        "z": "d6b6ee2824896677",
+        "name": "Umidade",
+        "func": "msg.payload = msg.payload.humidity;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 340,
+        "wires": [
+            [
+                "umidade-gauge"
+            ]
+        ]
+    },
+    {
+        "id": "agua-fn",
+        "type": "function",
+        "z": "d6b6ee2824896677",
+        "name": "Nível da Água",
+        "func": "msg.payload = msg.payload.water_level;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1010,
+        "y": 400,
+        "wires": [
+            [
+                "agua-gauge"
+            ]
+        ]
+    },
+    {
+        "id": "chuva-fn",
+        "type": "function",
+        "z": "d6b6ee2824896677",
+        "name": "Intensidade da Chuva",
+        "func": "msg.payload = {\n    \"chuva\": msg.payload.rain_intensity,\n    \"timestamp\": new Date().toLocaleTimeString()\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 460,
+        "wires": [
+            [
+                "chuva-chart"
+            ]
+        ]
+    },
+    {
+        "id": "alertas-fn",
+        "type": "function",
+        "z": "d6b6ee2824896677",
+        "name": "Alertas",
+        "func": "const a = msg.payload.alerts;\nmsg.payload =\n    (a.emergency ? \"🚨 Emergência | \" : \"\") +\n    (a.flood_risk ? \"🌊 Risco de Inundação | \" : \"\") +\n    (a.heavy_rain ? \"🌧️ Chuva Forte\" : \"Sem alertas\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1000,
+        "y": 520,
+        "wires": [
+            [
+                "alerta-text"
+            ]
+        ]
+    },
+    {
+        "id": "temp-gauge",
+        "type": "ui_gauge",
+        "z": "d6b6ee2824896677",
+        "name": "Gauge Temp",
+        "group": "dashboard-group",
+        "order": 1,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 50,
+        "colors": [
+            "#00bfff",
+            "#ffff00",
+            "#ff0000"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1260,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "umidade-gauge",
+        "type": "ui_gauge",
+        "z": "d6b6ee2824896677",
+        "name": "Gauge Umidade",
+        "group": "dashboard-group",
+        "order": 2,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Umidade",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 100,
+        "colors": [
+            "#66ff66",
+            "#ffff66",
+            "#ff6666"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1260,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "agua-gauge",
+        "type": "ui_gauge",
+        "z": "d6b6ee2824896677",
+        "name": "Gauge Água",
+        "group": "dashboard-group",
+        "order": 3,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Nível da Água",
+        "label": "cm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 50,
+        "colors": [
+            "#00ccff",
+            "#ffff66",
+            "#ff3300"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1280,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "chuva-chart",
+        "type": "ui_chart",
+        "z": "d6b6ee2824896677",
+        "name": "Chuva",
+        "group": "dashboard-group",
+        "order": 4,
+        "width": 6,
+        "height": 4,
+        "label": "Intensidade da Chuva",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Sem dados",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "1023",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#00bfff"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1300,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "alerta-text",
+        "type": "ui_text",
+        "z": "d6b6ee2824896677",
+        "group": "dashboard-group",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "name": "Alertas",
+        "label": "Alertas",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1260,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "4882b4110d76580f",
+        "type": "debug",
+        "z": "d6b6ee2824896677",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "a3a889818ff81a72",
+        "type": "mqtt-broker",
+        "name": "Mosquitto",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+] 
