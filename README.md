@@ -111,6 +111,18 @@ O sistema é composto por três partes principais:
    #define MODE_BUTTON_PIN 15
    ```
 
+3. Após isso cole o código na primeira aba do Wokwi com o projeto aberto ao lado do diagram.json
+
+### AVISO!!!!!
+
+Pode haver um erro na simulação onde uma das telas da solução não apareça as informações:
+
+![image](https://github.com/user-attachments/assets/24eaa978-9e01-4441-8f6c-5479b0919f73)
+
+
+Caso mesmo após apertar o botão de play e os avisos sonoros começarem ele continuar desligado apenas tente parar de rodar e iniciar novamente até funcionar pois isso é problema do próprio Wokwi ;-;
+
+
 ### Diagrama de Conexões
 
 O sistema foi implementado utilizando o simulador Wokwi, que permite testar o funcionamento completo do hardware. Abaixo está o diagrama de conexões dos componentes:
