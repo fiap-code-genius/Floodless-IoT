@@ -84,7 +84,7 @@ O sistema é composto por três partes principais:
    }
    ```
 
-3. Configure as bibliotecas em `libraries.txt`:
+3. Configure as bibliotecas em `libraries`:
    ```
    DHT sensor library
    LiquidCrystal I2C
@@ -166,7 +166,6 @@ Os elementos visuais incluem:
    - O dashboard estará disponível em: http://localhost:1880/ui
    - Para acessar de outros dispositivos na rede local, substitua "localhost" pelo IP do computador
    - O dashboard atualiza automaticamente quando novos dados são recebidos
-   - Para visualizar em tela cheia, adicione "/fullscreen" à URL do dashboard
 
 5. Personalizando o Dashboard:
    - No Node-RED, clique em qualquer nó do tipo "gauge" ou "chart"
@@ -266,12 +265,6 @@ Para testar o sistema:
    - Observe os diferentes cenários
    - Verifique os alertas
 
-## Contribuição
-
-Sinta-se à vontade para contribuir com o projeto através de:
-- Relatórios de bugs
-- Sugestões de melhorias
-- Pull requests
 
 ## Parâmetros de Configuração
 
@@ -285,4 +278,18 @@ const float HUMIDITY_ALERT = 80.0;     // %
 // Intervalos
 const int UPDATE_INTERVAL = 2000;      // ms
 const int SIMULATION_INTERVAL = 5000;  // ms
-``` 
+```
+
+
+## Contribuição
+
+Sinta-se à vontade para contribuir com o projeto através de:
+- Relatórios de bugs
+- Sugestões de melhorias
+- Pull requests
+
+
+## Links
+
+ - Demonstrando a solução: https://youtu.be/YfjVY-L0NZc
+ - Projeto original: https://wokwi.com/projects/432243921915620353
