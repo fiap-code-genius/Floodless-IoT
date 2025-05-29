@@ -47,7 +47,6 @@
     [ "rain1:AO", "esp32:D34", "blue", [ "v-20", "h200" ] ],
     [ "btn1:1.l", "esp32:D15", "green", [ "v0" ] ],
     [ "btn1:2.l", "esp32:GND", "black", [ "v0" ] ],
-    [ "buzzer1:1", "esp32:D22", "white", [ "v19.2", "h-48" ] ],
     [ "buzzer1:2", "esp32:D23", "red", [ "v0" ] ]
   ],
   "dependencies": {}
