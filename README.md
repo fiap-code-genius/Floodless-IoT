@@ -2,6 +2,11 @@
 
 Este projeto implementa um sistema IoT para monitoramento e alerta de enchentes, utilizando sensores para medir temperatura, umidade, nível de água e intensidade de chuva. O sistema utiliza um ESP32 como microcontrolador principal, comunicação MQTT para transmissão dos dados e Node-RED para visualização e processamento das informações.
 
+## Equipe
+   - Wesley Sena dos Santos - RM: 558043
+   - Vanessa Yukari Iwamoto - RM: 558092
+   - Samara Victoria Ferraz dos Santos - RM: 558719
+
 ## Visão Geral do Sistema
 
 O sistema é composto por três partes principais:
