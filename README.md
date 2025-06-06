@@ -202,8 +202,6 @@ Os elementos visuais incluem:
 
 O fluxo implementado no Node-RED processa os dados da seguinte forma:
 
-![Fluxo Node-RED](images/fluxo_nodered.png)
-
 1. **MQTT Input**: Recebe dados do tópico "flood/sensors/data/device001"
 2. **JSON Parser**: Converte a mensagem JSON recebida
 3. **Funções de Processamento**:
